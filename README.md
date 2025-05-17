@@ -40,13 +40,17 @@ The goal of this project is to:
 Using the Azure portal:
 
 * Search for **"Resource groups"** and click **Create**.
-  ![create RG1](https://github.com/user-attachments/assets/bf0c28d9-2264-4bff-a7e7-c10b670ceabd)
+  
+  ![create RG1](https://github.com/user-attachments/assets/4c0716e6-8d82-47ce-b3a7-97ec41288c7f)
+  
 * Name it `HONEYPOT-LAB`.
-![create RG2](https://github.com/user-attachments/assets/2f034be9-6fad-4a10-9ba7-a0edc3d7430b)
-* Click **Review + Create**.
-![create RG3](https://github.com/user-attachments/assets/5e07ccb7-87ee-4744-ae7e-bd3511f53d1d)
-![create RG4](https://github.com/user-attachments/assets/024a2114-8752-4bcb-8040-308f82d259a0)
+  
+![create RG2](https://github.com/user-attachments/assets/0f52f33d-2e48-423a-a1f4-222e4dcbb5f3)
 
+* Click **Review + Create**.
+
+![create RG3](https://github.com/user-attachments/assets/db235307-f3e7-4c79-a41c-fb9a934bb4be)
+![create RG4](https://github.com/user-attachments/assets/05771aaa-d181-4559-957f-6ecee587629b)
 
 > 🔎 *Resource groups* in Azure are containers that hold related resources like virtual networks and machines, making management and billing easier.
 
@@ -55,16 +59,18 @@ Using the Azure portal:
 ### **Step 2: Create a Virtual Network (VNet)**
 
 * Search for **“Virtual Networks”**, click **Create**, and name it `ADMIN NETWORK`.
-![create VN1](https://github.com/user-attachments/assets/b1033bf5-9840-41c5-9b56-7a4fef14a496)
+
+![create VN1](https://github.com/user-attachments/assets/a0959570-bce8-4475-b5f7-9e9ad0113a56)
 
 * Assign it to the `HONEYPOT-LAB` resource group and ensure the **Region** is **East US 2**.
-![create VN2](https://github.com/user-attachments/assets/995c90a0-154e-49bc-90d6-893b92cef583)
-![create VN3](https://github.com/user-attachments/assets/0db26f77-b7da-4823-90d1-96083987d4a1)
+
+![create VN2](https://github.com/user-attachments/assets/46a7fd27-be45-40cc-96f4-df84b3c6fa72)
 
 * Click **Review + Create**.
-![create VN3](https://github.com/user-attachments/assets/9ee28646-fba5-44b7-a488-6d282b8caa5a)
-![create VN4](https://github.com/user-attachments/assets/d992bdbb-d205-40ff-aa32-4f3ee32927ce)
-![create VN5](https://github.com/user-attachments/assets/cebd5436-6763-48c8-8c24-db2dab94664f)
+  
+![create VN3](https://github.com/user-attachments/assets/1d070b40-5356-4035-8f52-c35921f2f7e9)
+![create VN4](https://github.com/user-attachments/assets/d48142d6-5340-40f7-a75b-a8917c05ff46)
+![create VN5](https://github.com/user-attachments/assets/aa7a8db4-4008-46c8-8fb4-33746288a4f0)
 
 > 🛠️ The virtual network allows communication between Azure resources. It also simulates a corporate network layout to make the honeypot believable.
 
@@ -73,17 +79,21 @@ Using the Azure portal:
 ### **Step 3: Deploy a Virtual Machine**
 
 * Search **“Virtual Machines”**, click **Create**, and name it `FINANCE-DB` (an attractive name for attackers).
-![create VM1](https://github.com/user-attachments/assets/6fbbbf92-0c07-4830-95f3-fb1738d36025)
-![create VM2](https://github.com/user-attachments/assets/6e9dd369-b078-492c-b459-2a25a180c35a)
+  
+![create VM1](https://github.com/user-attachments/assets/3029aaad-8cf4-416a-a01c-a2fe23b2fd0c)
+![create VM2](https://github.com/user-attachments/assets/b0d43d23-0c7a-4c25-a1db-b11242ab6477)
 
 * Select **Windows 10**, choose a manageable size (for cost), and input your credentials.
-![create VN5 correct](https://github.com/user-attachments/assets/268d25d2-1910-4f38-af10-1e72b03f8a61)
+  
+![create VN5 correct](https://github.com/user-attachments/assets/182f8e7e-13a8-466a-873a-626aa113cb6b)
 
 * Acknowledge the license checkbox.
-![create VM3](https://github.com/user-attachments/assets/9aa3926e-4729-497b-ba54-5b70354cd09e)
+
+![create VM3](https://github.com/user-attachments/assets/fc008a7b-0c98-4321-8d45-400b348dc999)
 
 * Under **Management**, check the option to delete NIC and IP with the VM.
-![create VM5](https://github.com/user-attachments/assets/cd87ae67-894a-4013-957f-2811da2c5d0c)
+  
+![create VM5](https://github.com/user-attachments/assets/e5436841-bffe-400e-90cc-f947c1dbf089)
 
 * In **Advanced**, disable boot diagnostics.
 * Click **Review + Create** → **Create**.
@@ -91,11 +101,13 @@ Using the Azure portal:
 Once deployed:
 
 * Navigate to the `HONEYPOT-LAB` resource group, locate the `FINANCE-DB-nsg`, and delete the default RDP rule.**
-![Create VMsecurity Group](https://github.com/user-attachments/assets/7ab051d8-2f5f-481b-8db9-aeb555a5f9fb)
-![create VM secutity G2](https://github.com/user-attachments/assets/726360f7-aa20-4eda-8264-4f665dbe7a79)
+
+![Create VMsecurity Group](https://github.com/user-attachments/assets/269944da-abe6-48c6-a611-79222680358f)
+![create VM secutity G2](https://github.com/user-attachments/assets/f4a8a020-405f-488f-9e06-32ba56349c7e)
 
 * Create a new rule to **allow all inbound traffic**.
-![create VM Security G3](https://github.com/user-attachments/assets/db898c5d-52d2-4c1a-b30b-0c5c01dd4a44)
+  
+![create VM Security G3](https://github.com/user-attachments/assets/5c566a14-a760-4009-bd55-6cd451054235)
 
 > 🚨 This increases exposure, making the system more likely to be targeted.
 
@@ -103,11 +115,14 @@ Once deployed:
 
 ### **Log into the VM and Turn Off Firewall**
 
-* Use **Remote Desktop** to connect using the public IP, username, and password.
-![logging into VM2](https://github.com/user-attachments/assets/ce17d4f7-2559-4531-9386-b6d270e238b2)
+* For Windows users, you can search for **Remote Desktop** in the search bar to connect to the Virtual Machine using the public IP, username, and password.
+
+![remote desktop](https://github.com/user-attachments/assets/38009eab-0851-4359-8d34-63c44fe168fb)
+![logging into VM2](https://github.com/user-attachments/assets/befc64ac-85b6-490a-9028-d4b5118b9abf)
 
 * Disable the firewall via `wf.msc > Properties > Turn off all profiles`.
-![logging into VM3](https://github.com/user-attachments/assets/19d084ab-80cf-4a62-90c0-4caf78746638)
+  
+![logging into VM3](https://github.com/user-attachments/assets/be985c8d-6d1f-4f80-a4d1-f0f375d4baa5)
 
 > 🔒 Disabling the firewall ensures no traffic is blocked, mimicking a misconfigured system — perfect bait for attackers.
 
@@ -115,7 +130,8 @@ Once deployed:
 
 * Attempt failed logins manually (e.g., username “employee”) and confirm via **Event Viewer > Security logs**.
 * Look for **Event ID 4625** (failed login attempts).
-![eventviewer1](https://github.com/user-attachments/assets/9ff3bb41-4224-4c29-80f9-811d08cc7233)
+
+![eventviewer1](https://github.com/user-attachments/assets/ae3572b9-7633-4f82-a352-5baa6a8873a8)
 
 ---
 
@@ -124,31 +140,36 @@ Once deployed:
 ### **Create a Log Analytics Workspace (LAW)**
 
 * Search **“Log Analytics Workspaces”**, click **Create**, and link it to `HONEYPOT-LAB`.
-![Log Analytics 1](https://github.com/user-attachments/assets/bb8fd118-7234-446f-817f-a6e6d1706233)
-![Log Analytics 2](https://github.com/user-attachments/assets/09cee22a-e369-488b-b1d7-472b8e59e502)
+  
+![Log Analytics 1](https://github.com/user-attachments/assets/44b4c7cb-eeae-4e21-9886-64fae129e2c0)
+![Log Analytics 2](https://github.com/user-attachments/assets/6741cd7d-c38c-4bfa-a36d-8c3a3e5139c8)
 
 ### **Connect Azure Sentinel**
 
 * Create a **Sentinel Instance** and connect it to your LAW (Log Analytics Workspace).
-![sentinel1](https://github.com/user-attachments/assets/724c098d-3752-4f82-ae02-e578347f2dc0)
-![sentinel2](https://github.com/user-attachments/assets/ed9ec9a7-4681-46ea-b200-b24e0a92564f)
+  
+![sentinel1](https://github.com/user-attachments/assets/462cb3b3-ed8d-40c1-ad81-6e84baba5d97)
+![sentinel2](https://github.com/user-attachments/assets/1e818744-3417-4b6e-8c99-21bec634047d)
 
 #### **Enable the “Windows Security Events via AMA” Connector**
 
 * Go to **Content Management > Content Hub**, search “Security Event”.
 * Click **Install**, then **Manage**, select the **windows security event via AMA** then open the **connector page**.
-![windows Security Events](https://github.com/user-attachments/assets/7a94fb20-63b4-415d-8fa1-6a1a6b59a659)
-![windows Security Events2](https://github.com/user-attachments/assets/3b130639-a878-4402-a23b-8fa8b921ef58)
+  
+![windows Security Events](https://github.com/user-attachments/assets/7bf44148-aa95-47a4-ac37-92b1e68af9f0)
+![windows Security Events2](https://github.com/user-attachments/assets/2a871688-6811-439a-a472-42db0a7a2a14)
 
 * Create a **Data Collection Rule**.
-![windows Security Events5](https://github.com/user-attachments/assets/0a40c940-c1f0-416b-a9c9-b37b2a352d00)
+
+![windows Security Events2](https://github.com/user-attachments/assets/5404e3be-1993-42dc-8566-abeeaf3981a5)
 
 > 📊 The **AMA (Azure Monitor Agent)** streams Windows Security Events (like login failures) to your workspace for monitoring and threat detection.
 
 To confirm:
 
 * Go to **VM > Settings > Extensions + Applications** and verify Azure Monitor is installed.
-![windows Security Events7](https://github.com/user-attachments/assets/e94163a2-b436-4bb6-b9aa-8b1142204de9)
+  
+![windows Security Events2](https://github.com/user-attachments/assets/2d26a613-78a1-49ac-984d-3b01a6db56e1)
 
 ---
 
@@ -156,7 +177,8 @@ To confirm:
 
 * Open your **Log Analytics Workspace > Logs**.
 * Run the query: `SecurityEvent` to view VM activity.
-![windows Security Events8](https://github.com/user-attachments/assets/4659aaab-840f-4155-8d04-0922dbac5240)
+
+![windows Security Events8](https://github.com/user-attachments/assets/127e86f0-133c-416f-943d-53975572cbbe)
 
   You’ll see logs such as:
 
@@ -173,17 +195,21 @@ To map attacker IP addresses to their geographic locations, we leverage **Azure 
 
    * Navigate to your **Microsoft Sentinel** instance.
    * Go to **Configuration > Watchlist**, then click **Create new watchlist**.
-![watchlist1](https://github.com/user-attachments/assets/77281f61-cffd-4b5d-88b9-97aa08dc7692)
+     
+![watchlist1](https://github.com/user-attachments/assets/2c4a4435-8597-43ce-ae7b-8ec145b5d070)
 
    * Set both the **Name** and **Alias** to `geoip`.
-![watchlist2](https://github.com/user-attachments/assets/c3714fc5-02db-46ba-a560-c2cac8ec54ab)
+     
+![watchlist2](https://github.com/user-attachments/assets/21923700-1558-43d1-b9d2-60e440e66d7c)
 
   * use a Azure Storage and then enter this URL: https://sacyberrange00.blob.core.windows.net/vm-applications/geoip-summarized.csv?sp=r&st=2025-05-16T00:31:16Z&se=2030-01-01T08:31:16Z&spr=https&sv=2024-11-04&sr=b&sig=taUGULhhgRiY0BRwEEbhusoh%2BxaIQJWAFwxN2%2FOWWhc%3D
    * Set the **SearchKey** field to `network` (this ensures that the IP ranges in the logs are matched correctly).
-![windows Security Events9](https://github.com/user-attachments/assets/ef808903-d2b8-4820-96f1-e6a04e5806c1)
+     
+![windows Security Events9](https://github.com/user-attachments/assets/bbc5bb11-b48c-4b77-87ee-37fc9c9dd439)
 
 NOTE: Wait till it fully downloads the file data
-![windows Security Events10](https://github.com/user-attachments/assets/66d56fe6-e2a4-4382-8b6a-c3e1de887401)
+
+![windows Security Events10](https://github.com/user-attachments/assets/0beb6d7d-44f1-4d99-9d9b-6ddb1d256e82)
 
 **Matching IP Logs to Geolocation Data**
    Azure Sentinel uses the IP address from the `SecurityEvent` logs (specifically those tied to failed login attempts, Event ID 4625) and looks up the corresponding IP block in the `geoip` watchlist using the `ipv4_lookup()` function in KQL (Kusto Query Language).
@@ -199,11 +225,13 @@ NOTE: Wait till it fully downloads the file data
 ## **Step 7: Create a Global Attack Map**
 
 * In **Sentinel > Workbooks**, click **Create new workbook**.
-![create map1](https://github.com/user-attachments/assets/ac30ccd4-f182-4564-8d8e-de913993ae5a)
+  
+![create map1](https://github.com/user-attachments/assets/89c1568b-c9f3-4a7d-b0eb-6d8c7c722819)
 
 * Add a **query**, switch to **Advanced Editor**, and paste the following JSON:
-![create map2](https://github.com/user-attachments/assets/cc16262a-a97e-408c-86e0-ee60f9ea711d)
-![create map3](https://github.com/user-attachments/assets/b65406c6-f6da-4e9b-825e-947ee9e0e80b)
+  
+![create map2](https://github.com/user-attachments/assets/2795bd41-ab48-4122-98a6-c58911c772e0)
+![create map3](https://github.com/user-attachments/assets/ed4e7578-1a0e-48e8-8b0a-24eb89a195cc)
 
 ```json
 {
@@ -253,11 +281,13 @@ NOTE: Wait till it fully downloads the file data
 * 13.3k from Tilburg, Netherlands
 * 2 attacks from Cape Town, South Africa
 
-![map created1](https://github.com/user-attachments/assets/8eb7ef1d-68cb-407c-880a-46691f619658)
+![map created1](https://github.com/user-attachments/assets/1f32e4d0-683f-4705-acab-4f83b9976195)
 
 **After 8 Hours:**
 
 * Numbers significantly increased, proving the honeypot's constant lure to malicious actors globally.
+
+![8hrs Map](https://github.com/user-attachments/assets/44ba0cc8-c523-4b90-9ff1-a6dab1c41755)
 
 ---
 
