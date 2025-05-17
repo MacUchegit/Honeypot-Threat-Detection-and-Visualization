@@ -255,9 +255,9 @@ NOTE: Wait till it fully downloads the file data
 
 ![map created1](https://github.com/user-attachments/assets/8eb7ef1d-68cb-407c-880a-46691f619658)
 
-**After 6 Hours:**
+**After 8 Hours:**
 
-* Numbers hold steady, proving the honeypot's constant lure to malicious actors globally.
+* Numbers significantly increased, proving the honeypot's constant lure to malicious actors globally.
 
 ---
 
