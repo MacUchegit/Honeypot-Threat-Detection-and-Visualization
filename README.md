@@ -119,6 +119,7 @@ Once deployed:
 
 * For Windows users, you can search for **Remote Desktop** in the search bar to connect to the Virtual Machine using your public IP (you can get your public IP by opening your VM `FINANCE-DB` in Azure Portal), username, and password.
 
+![logging into VM1](https://github.com/user-attachments/assets/e3273854-2e36-4d49-9180-e6106c78b1a5)
 ![remote desktop](https://github.com/user-attachments/assets/38009eab-0851-4359-8d34-63c44fe168fb)
 ![logging into VM2](https://github.com/user-attachments/assets/befc64ac-85b6-490a-9028-d4b5118b9abf)
 
