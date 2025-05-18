@@ -43,7 +43,7 @@ Using the Azure portal:
   
   ![create RG1](https://github.com/user-attachments/assets/4c0716e6-8d82-47ce-b3a7-97ec41288c7f)
   
-* Name it `HONEYPOT-LAB`.
+* I named it `HONEYPOT-LAB`.
   
 ![create RG2](https://github.com/user-attachments/assets/0f52f33d-2e48-423a-a1f4-222e4dcbb5f3)
 
@@ -58,7 +58,7 @@ Using the Azure portal:
 
 ### **Step 2: Create a Virtual Network (VNet)**
 
-* Search for **“Virtual Networks”**, click **Create**, and name it `ADMIN NETWORK`.
+* Search for **“Virtual Networks”**, click **Create**, and I name it `ADMIN NETWORK`.
 
 ![create VN1](https://github.com/user-attachments/assets/a0959570-bce8-4475-b5f7-9e9ad0113a56)
 
@@ -70,6 +70,8 @@ Using the Azure portal:
   
 ![create VN3](https://github.com/user-attachments/assets/1d070b40-5356-4035-8f52-c35921f2f7e9)
 ![create VN4](https://github.com/user-attachments/assets/d48142d6-5340-40f7-a75b-a8917c05ff46)
+
+Notice the Virtual Network `ADMIN-NETWORK`, has been created under the Resource Group `HONEYPOT-LAB`
 ![create VN5](https://github.com/user-attachments/assets/aa7a8db4-4008-46c8-8fb4-33746288a4f0)
 
 > 🛠️ The virtual network allows communication between Azure resources. It also simulates a corporate network layout to make the honeypot believable.
@@ -87,9 +89,9 @@ Using the Azure portal:
   
 ![create VN5 correct](https://github.com/user-attachments/assets/182f8e7e-13a8-466a-873a-626aa113cb6b)
 
-* Acknowledge the license checkbox.
+* Create your login credentials(Username and password). Try NOT to forget these credentials because they will be needed to log into your Virtual Machine. Next, Acknowledge the license checkbox.
 
-![create VM3](https://github.com/user-attachments/assets/fc008a7b-0c98-4321-8d45-400b348dc999)
+![create VM4](https://github.com/user-attachments/assets/e94d4296-0c04-46f0-8382-b454878738f7)
 
 * Under **Management**, check the option to delete NIC and IP with the VM.
   
@@ -115,7 +117,7 @@ Once deployed:
 
 ### **Log into the VM and Turn Off Firewall**
 
-* For Windows users, you can search for **Remote Desktop** in the search bar to connect to the Virtual Machine using the public IP, username, and password.
+* For Windows users, you can search for **Remote Desktop** in the search bar to connect to the Virtual Machine using your public IP (you can get your public IP by opening your VM `FINANCE-DB` in Azure Portal), username, and password.
 
 ![remote desktop](https://github.com/user-attachments/assets/38009eab-0851-4359-8d34-63c44fe168fb)
 ![logging into VM2](https://github.com/user-attachments/assets/befc64ac-85b6-490a-9028-d4b5118b9abf)
@@ -128,7 +130,8 @@ Once deployed:
 
 ### **Simulate and Observe Logins**
 
-* Attempt failed logins manually (e.g., username “employee”) and confirm via **Event Viewer > Security logs**.
+* I logged out of my VM and intentionally attempted to log in using incorrect credentials (e.g., username “employee”) to mimic failed login attempts. This was done to verify if such activity would be captured in the Security logs. Most of the time, these failed attempts are recorded with Event ID 4625.
+* Confirm via **Event Viewer > Security logs**.
 * Look for **Event ID 4625** (failed login attempts).
 
 ![eventviewer1](https://github.com/user-attachments/assets/ae3572b9-7633-4f82-a352-5baa6a8873a8)
@@ -158,10 +161,12 @@ Once deployed:
   
 ![windows Security Events](https://github.com/user-attachments/assets/7bf44148-aa95-47a4-ac37-92b1e68af9f0)
 ![windows Security Events2](https://github.com/user-attachments/assets/2a871688-6811-439a-a472-42db0a7a2a14)
+![windows Security Events4](https://github.com/user-attachments/assets/bdc8c48f-8414-479b-8172-964409c5e679)
 
 * Create a **Data Collection Rule**.
 
-![windows Security Events2](https://github.com/user-attachments/assets/5404e3be-1993-42dc-8566-abeeaf3981a5)
+![windows Security Events5](https://github.com/user-attachments/assets/b3753e76-6a64-418f-97dc-8601838d86e1)
+![windows Security Events6](https://github.com/user-attachments/assets/d331a0e3-5ec2-45ea-bdf2-b2cf263edddb)
 
 > 📊 The **AMA (Azure Monitor Agent)** streams Windows Security Events (like login failures) to your workspace for monitoring and threat detection.
 
@@ -169,7 +174,7 @@ To confirm:
 
 * Go to **VM > Settings > Extensions + Applications** and verify Azure Monitor is installed.
   
-![windows Security Events2](https://github.com/user-attachments/assets/2d26a613-78a1-49ac-984d-3b01a6db56e1)
+![windows Security Events7](https://github.com/user-attachments/assets/4c2d07b8-df22-434f-a47d-e8b73baccf8d)
 
 ---
 
@@ -202,7 +207,7 @@ To map attacker IP addresses to their geographic locations, we leverage **Azure 
      
 ![watchlist2](https://github.com/user-attachments/assets/21923700-1558-43d1-b9d2-60e440e66d7c)
 
-  * use a Azure Storage and then enter this URL: https://sacyberrange00.blob.core.windows.net/vm-applications/geoip-summarized.csv?sp=r&st=2025-05-16T00:31:16Z&se=2030-01-01T08:31:16Z&spr=https&sv=2024-11-04&sr=b&sig=taUGULhhgRiY0BRwEEbhusoh%2BxaIQJWAFwxN2%2FOWWhc%3D
+  * Use an Azure Storage and then enter this URL: https://sacyberrange00.blob.core.windows.net/vm-applications/geoip-summarized.csv?sp=r&st=2025-05-16T00:31:16Z&se=2030-01-01T08:31:16Z&spr=https&sv=2024-11-04&sr=b&sig=taUGULhhgRiY0BRwEEbhusoh%2BxaIQJWAFwxN2%2FOWWhc%3D
    * Set the **SearchKey** field to `network` (this ensures that the IP ranges in the logs are matched correctly).
      
 ![windows Security Events9](https://github.com/user-attachments/assets/bbc5bb11-b48c-4b77-87ee-37fc9c9dd439)
@@ -291,7 +296,7 @@ NOTE: Wait till it fully downloads the file data
 
 ---
 
-### **Conclusion and Project Overview**
+## **Conclusion and Project Overview**
 
 This Honeypot project demonstrates how a deceptively simple Windows virtual machine, when exposed to the public internet, can attract thousands of malicious login attempts within minutes. The real power of this setup lies in its integration with **Azure Sentinel**, **Log Analytics**, and **Watchlists**, allowing for comprehensive monitoring, threat detection, and actionable insights.
 
