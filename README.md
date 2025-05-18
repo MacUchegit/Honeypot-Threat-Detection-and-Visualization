@@ -1,4 +1,4 @@
-![honeypot architecture](https://github.com/user-attachments/assets/9213d368-ea23-4fae-ae54-e14b011acc31)
+![honeypot architecture](https://github.com/user-attachments/assets/12dc85aa-5aba-4bee-88a8-b3d6115d5eae)
 
 # **🛡️ Honeypot Project: Threat Detection & Visualization using Azure Sentinel**
 
